@@ -4,7 +4,7 @@
     <title>Chat Room</title>
     <meta charset="utf-8" name="viewport" content="width=device-width">
     <link rel="stylesheet" th:href="@{/webjars/mdui/dist/css/mdui.css}">
-    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/jquery/3.1.0/jquery.min.js}"></script>
     <script th:src="@{/webjars/mdui/dist/js/mdui.js}"></script>
 </head>
 <body class="mdui-theme-primary-indigo mdui-theme-accent-pink">
@@ -27,6 +27,7 @@
                     <div class="mdui-textfield-floating-label" style="margin-top:15px">
                         <i class="mdui-icon">Welcome：</i>
                         <i class="mdui-icon" id="username" th:text="${username}"></i>
+                        <i class="mdui-icon" id="test" th:text="${test}"></i>
                     </div>
                 </div>
                 <div class="mdui-col-xs-12 mdui-col-sm-10">
@@ -36,7 +37,9 @@
                         <input class="mdui-textfield-input" id="msg"/>
                     </div>
                     <div class="mdui-container" style="padding:20px 35px">
-                        <!-- TODO: add a send button to send message -->
+                        <button class="mdui-btn mdui-color-theme-accent mdui-ripple"
+                                onclick="sendMsgToServer()">Send (enter)
+                        </button>
                         <button class="mdui-btn mdui-color-theme mdui-ripple"
                                 onclick="clearMsg()">Clear
                         </button>
@@ -55,9 +58,11 @@
                     <span class="mdui-chip-icon mdui-color-blue">
                         <i class="mdui-icon material-icons">face</i></span>
                     <span class="mdui-chip-title">Online Users</span>
-                    <!-- TODO: check online number num -->
+                    <span class="mdui-chip-title chat-num">0</span>
                 </div>
-                <!-- TODO: add a message container -->
+                <div class="message-container">
+
+                </div>
             </div>
 
         </div>
@@ -76,11 +81,17 @@
         /**
          * WebSocket client PS：URL shows WebSocket protocal, port number, and then end point.
          */
-        var webSocket = new WebSocket(/*[[${webSocketUrl}]]*/ 'ws://localhost:8080/chat');
+<!--    var webSocket = new WebSocket(/*[[${webSocketUrl}]]*/ 'ws://localhost:8080/chat');-->
+
+        var username = /*[[${username}]]*/;
+        var wsURL = /*[[${wsURL}]]*/;
+        var webSocket = new WebSocket(wsURL + username);
+
         /**
          * websocket open connection.
          */
         webSocket.onopen = function (event) {
+<!--            alert("webSocket.onopen")-->
             console.log('WebSocket open connection');
         };
 
@@ -152,7 +163,6 @@
         var e = event || window.event || arguments.callee.caller.arguments[0];
         e.keyCode === 13 && sendMsgToServer();
     };
-
 </script>
 
 </body>
