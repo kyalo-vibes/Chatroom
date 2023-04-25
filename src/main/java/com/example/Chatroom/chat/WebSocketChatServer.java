@@ -28,7 +28,7 @@ public class WebSocketChatServer {
     private static Map<String, String> onlineUsers = new ConcurrentHashMap<>();
 
     private static void sendMessageToAll(String msg) {
-        //TODO: add send message method.
+        // send message method.
         System.out.println("---sendMsgToEachSession---");
         System.out.println("sendMsgToEachSession msg=" + msg);
 
@@ -46,7 +46,7 @@ public class WebSocketChatServer {
      */
     @OnOpen
     public void onOpen(Session session, @PathParam("username") String username) {
-        //TODO: add on open connection.
+        // open connection.
         System.out.println("---Open---");
         System.out.println("OnOpen: username=" + username);
         System.out.println("OnOPen: session.getId()=" +session.getId());
@@ -65,7 +65,7 @@ public class WebSocketChatServer {
      */
     @OnMessage
     public void onMessage(Session session, String jsonStr) {
-        //TODO: add send message.
+        // send message.
         System.out.println("---onMessage---");
         System.out.println("jsonStr=" + jsonStr);
         System.out.println("session=" + session.getId());
@@ -87,7 +87,7 @@ public class WebSocketChatServer {
      */
     @OnClose
     public void onClose(Session session) {
-        //TODO: add close connection.
+        // close connection.
         System.out.println("---onClose---");
 
         onlineSessions.remove(session.getId());

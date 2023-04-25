@@ -30,7 +30,7 @@ public class ChatroomApplication {
 	 */
 	@GetMapping("/chat")
 	public ModelAndView index(String username, HttpServletRequest request) throws UnknownHostException {
-		//TODO: add code for login to chatroom.
+		// code for login to chatroom.
 		System.out.println("ModelAndView: username="+ username);
 
 		StringBuffer url =  request.getRequestURL();

@@ -6,7 +6,7 @@ import com.alibaba.fastjson.annotation.JSONField;
  * WebSocket message model
  */
 public class Message {
-    // TODO: add message model.
+    // message model.
     @JSONField(name="username", ordinal = 1)
     private String username;
     @JSONField(name="onlineCount", ordinal = 2)
