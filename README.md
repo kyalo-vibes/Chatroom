@@ -12,6 +12,10 @@ Message model is the message payload that will be exchanged between the client a
 2. CHAT
 3. LEAVE
 
+## Demo
+
+https://user-images.githubusercontent.com/95200602/234334604-0fa7df8d-0ee4-4d32-87b4-14b69a59f4e6.mp4
+
 ## Tech Stack (Dependencies)
 
 ### 1. Setting up
